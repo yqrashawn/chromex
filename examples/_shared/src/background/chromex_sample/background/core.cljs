@@ -7,7 +7,8 @@
             [chromex.protocols.chrome-port :refer [post-message! get-sender]]
             [chromex.ext.tabs :as tabs]
             [chromex.ext.runtime :as runtime]
-            [chromex-sample.background.storage :refer [test-storage!]]))
+            [chromex-sample.background.storage :refer [test-storage!]]
+            [datascript.core :as d]))
 
 (def clients (atom []))
 
@@ -73,4 +74,5 @@
 (defn init! []
   (log "BACKGROUND: init")
   (test-storage!)
+  (js/console.log "datascript create conn" (d/create-conn))
   (boot-chrome-event-loop!))

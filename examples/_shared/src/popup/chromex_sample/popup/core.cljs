@@ -2,7 +2,8 @@
   (:require [cljs.core.async :refer [go-loop <!]]
             [chromex.logging :refer-macros [log info warn error group group-end]]
             [chromex.protocols.chrome-port :refer [post-message!]]
-            [chromex.ext.runtime :as runtime :refer-macros [connect]]))
+            [chromex.ext.runtime :as runtime :refer-macros [connect]]
+            [datascript.core :as d]))
 
 ; -- a message loop ---------------------------------------------------------------------------------------------------------
 
@@ -26,4 +27,5 @@
 
 (defn init! []
   (log "POPUP: init")
+  (js/console.log "datascript create conn" (d/create-conn))
   (connect-to-background-page!))
